@@ -6,6 +6,7 @@ export default defineConfig({
   lang: 'zh-CN',
   cleanUrls: true,
   srcDir: '.',
+  base: '/Yomin-Fab-LLM-Unreal-Plugin-Skill/',
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }]
