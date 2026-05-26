@@ -1,0 +1,94 @@
+import { defineConfig } from 'vitepress'
+
+export default defineConfig({
+  title: 'YominUnreal Plugins',
+  description: 'AI-powered Unreal Engine development tools — UI, Material, VFX, AI',
+  lang: 'zh-CN',
+  cleanUrls: true,
+  srcDir: '.',
+
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
+  ],
+
+  themeConfig: {
+    logo: '/logo.svg',
+    siteTitle: 'YominUnreal Plugins',
+
+    nav: [
+      { text: 'LLM Dynamic UI', link: '/llm-dynamic-ui/' },
+      { text: 'LLM Material', link: '/llm-material/' },
+      { text: 'LLM StateTree', link: '/llm-statetree/' },
+      { text: 'LLM MetaSound', link: '/llm-metasound/' }
+    ],
+
+    sidebar: {
+      '/llm-dynamic-ui/': [
+        {
+          text: 'LLM Dynamic UI',
+          items: [
+            { text: 'Overview', link: '/llm-dynamic-ui/' },
+            { text: 'Getting Started', link: '/llm-dynamic-ui/getting-started' },
+            { text: 'Widget Types', link: '/llm-dynamic-ui/widget-types' },
+            { text: 'Animation', link: '/llm-dynamic-ui/animation' },
+            { text: 'SDF Effects', link: '/llm-dynamic-ui/sdf-effects' }
+          ]
+        }
+      ],
+      '/llm-material/': [
+        {
+          text: 'LLM Material',
+          items: [
+            { text: 'Overview', link: '/llm-material/' },
+            { text: 'Getting Started', link: '/llm-material/getting-started' },
+            { text: 'Node Types', link: '/llm-material/node-types' },
+            { text: 'Substrate', link: '/llm-material/substrate' },
+            { text: 'Layout', link: '/llm-material/layout' },
+            { text: 'USH', link: '/llm-material/ush' },
+            { text: 'Examples', link: '/llm-material/examples' }
+          ]
+        }
+      ],
+      '/llm-statetree/': [
+        {
+          text: 'LLM StateTree',
+          items: [
+            { text: 'Overview', link: '/llm-statetree/' },
+            { text: 'Getting Started', link: '/llm-statetree/getting-started' },
+            { text: 'Node Types', link: '/llm-statetree/node-types' },
+            { text: 'Examples', link: '/llm-statetree/examples' }
+          ]
+        }
+      ],
+      '/llm-metasound/': [
+        {
+          text: 'LLM MetaSound',
+          items: [
+            { text: 'Overview', link: '/llm-metasound/' },
+            { text: 'Getting Started', link: '/llm-metasound/getting-started' },
+            { text: 'Node Types', link: '/llm-metasound/node-types' },
+            { text: 'Examples', link: '/llm-metasound/examples' }
+          ]
+        }
+      ]
+    },
+
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/yomin-unreal' }
+    ],
+
+    search: {
+      provider: 'local'
+    },
+
+    editLink: {
+      pattern: 'https://github.com/ituiyuio/Yomin-Fab-LLM-Unreal-Pluagin-Skill/edit/main/docs/:path',
+      text: 'Edit this page on GitHub'
+    },
+
+    footer: {
+      message: 'Powered by VitePress & YominUnreal',
+      copyright: 'Copyright © 2024-present YominUnreal'
+    }
+  }
+})

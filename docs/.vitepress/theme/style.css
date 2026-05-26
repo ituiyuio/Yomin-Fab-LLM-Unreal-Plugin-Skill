@@ -1,0 +1,22 @@
+/**
+ * VitePress Theme Customization
+ * 继承 DefaultTheme，添加 YominUnreal 品牌样式
+ */
+
+:root {
+  --vp-c-brand-1: #e06c75;
+  --vp-c-brand-2: #98c379;
+  --vp-c-brand-3: #e5c07b;
+  --vp-c-brand-4: #61afef;
+  --vp-c-brand-5: #c678dd;
+}
+
+.VPHome {
+  padding-bottom: 0;
+}
+
+.VPHero .name .clip {
+  background: linear-gradient(135deg, #e06c75, #e5c07b, #98c379, #61afef, #c678dd);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
