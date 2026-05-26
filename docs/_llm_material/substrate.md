@@ -1,23 +1,23 @@
 ---
 layout: default
-title: Substrate 材质
+title: Substrate Materials
 parent: LLMMaterial
 nav_order: 4
 ---
 
-# Substrate 材质
+# Substrate Materials
 
-LLMMaterial 支持 UE5 Substrate 分层材质系统。当 .llmmat 文件包含 `substrate` 字段时，系统自动使用 Substrate 路由模式。
+LLMMaterial supports UE5 Substrate layered material system. When a .llmmat file contains the `substrate` field, the system automatically uses the Substrate routing mode.
 
-## 路由模式
+## Routing Modes
 
-| 模式 | 条件 | 说明 |
-|------|------|------|
-| Traditional | 只有 `nodes` | 使用传统 Material Expression 构建 |
-| Substrate | 只有 `substrate.slabs` | 完全 Substrate 管线 |
-| Hybrid | `nodes` + `substrate.slabs` | Expression + Substrate 混合 |
+| Mode | Condition | Description |
+|------|-----------|-------------|
+| Traditional | Only `nodes` | Uses traditional Material Expression construction |
+| Substrate | Only `substrate.slabs` | Full Substrate pipeline |
+| Hybrid | `nodes` + `substrate.slabs` | Expression + Substrate mixed |
 
-## 基本结构
+## Basic Structure
 
 ```json
 {
@@ -34,40 +34,40 @@ LLMMaterial 支持 UE5 Substrate 分层材质系统。当 .llmmat 文件包含 `
 }
 ```
 
-## Slab 类型
+## Slab Types
 
-| 类型 | 描述 | 关键输入 |
-|------|------|----------|
-| `SubstrateSlabBSDF` | 基础表面 BSDF（默认） | DiffuseAlbedo, Roughness, F0, Metallic, Normal |
-| `SubstrateHairBSDF` | 头发 BSDF | BackboneRadius, Density, DirectVectorization |
-| `SubstrateUnlitBSDF` | 无光照 BSDF | EmissiveRadiance |
-| `SubstrateEyeBSDF` | 眼睛 BSDF | IrisDistance, PupilRadius |
-| `SubstrateSingleLayerWaterBSDF` | 单层水面 | Extinction, Scattering |
+| Type | Description | Key Inputs |
+|------|-------------|------------|
+| `SubstrateSlabBSDF` | Basic surface BSDF (default) | DiffuseAlbedo, Roughness, F0, Metallic, Normal |
+| `SubstrateHairBSDF` | Hair BSDF | BackboneRadius, Density, DirectVectorization |
+| `SubstrateUnlitBSDF` | Unlit BSDF | EmissiveRadiance |
+| `SubstrateEyeBSDF` | Eye BSDF | IrisDistance, PupilRadius |
+| `SubstrateSingleLayerWaterBSDF` | Single-layer water surface | Extinction, Scattering |
 
-## Composition 类型
+## Composition Types
 
-| 类型 | 描述 | 必需字段 |
-|------|------|----------|
-| `VerticalLayering` | 垂直分层（上下叠层） | `top` slab ID |
-| `HorizontalMixing` | 水平混合（两 slab 融合） | `slabA`, `slabB`, `MixRatio` |
-| `Add` | 添加两 slab | `slabA`, `slabB` |
-| `Weight` | 权重节点 | `slab` ID, `weight` |
-| `Select` | 选择节点 | `slabA`, `slabB`, `Threshold` |
+| Type | Description | Required Fields |
+|------|-------------|----------------|
+| `VerticalLayering` | Vertical layering (top/bottom stack) | `top` slab ID |
+| `HorizontalMixing` | Horizontal mixing (two slab blend) | `slabA`, `slabB`, `MixRatio` |
+| `Add` | Add two slabs | `slabA`, `slabB` |
+| `Weight` | Weight node | `slab` ID, `weight` |
+| `Select` | Select node | `slabA`, `slabB`, `Threshold` |
 
-## Slab 输入值格式
+## Slab Input Value Format
 
 ```json
 "inputs": {
-  "DiffuseAlbedo": [0.8, 0.8, 0.8],   // RGB 数组 = Constant3Vector
-  "Roughness": 0.3,                      // 标量 = Constant
-  "F0": [0.04, 0.04, 0.04],           // RGB 数组（默认为 0.04 菲涅尔）
-  "Metallic": 0.0,                      // 标量
-  "Normal": "/Game/Textures/Normal",     // 纹理引用
-  "BaseColor": { "node": "node_id" }    // 引用 Expression 节点 (Hybrid 模式)
+  "DiffuseAlbedo": [0.8, 0.8, 0.8],   // RGB array = Constant3Vector
+  "Roughness": 0.3,                      // Scalar = Constant
+  "F0": [0.04, 0.04, 0.04],           // RGB array (default 0.04 Fresnel)
+  "Metallic": 0.0,                      // Scalar
+  "Normal": "/Game/Textures/Normal",     // Texture reference
+  "BaseColor": { "node": "node_id" }    // Reference Expression node (Hybrid mode)
 }
 ```
 
-## 示例：简单 Substrate 材质
+## Example: Simple Substrate Material
 
 ```json
 {
@@ -97,7 +97,7 @@ LLMMaterial 支持 UE5 Substrate 分层材质系统。当 .llmmat 文件包含 `
 }
 ```
 
-## 示例：双层材质
+## Example: Two-Layer Material
 
 ```json
 {
@@ -132,9 +132,9 @@ LLMMaterial 支持 UE5 Substrate 分层材质系统。当 .llmmat 文件包含 `
 }
 ```
 
-## 注意事项
+## Notes
 
-- **ShadingModel 自动切换**：Substrate 材质会自动将 ShadingModel 设为 `MSM_Strata`
-- **Hybrid 模式**：`nodes` 中的 Expression 节点可以被 `substrate.slabs[].inputs[]` 中的 `{ "node": "node_id" }` 引用
-- **纹理输入**：纹理使用资产路径字符串，系统自动创建 `TextureObject` 或 `TextureSample` 节点
-- **不含 bottom 的 VerticalLayering**：当 root 只指定 `top` 时，Top slab 直接作为 root
+- **ShadingModel Auto-Switch**: Substrate materials automatically set ShadingModel to `MSM_Strata`
+- **Hybrid Mode**: Expression nodes in `nodes` can be referenced by `{ "node": "node_id" }` in `substrate.slabs[].inputs[]`
+- **Texture Inputs**: Textures use asset path strings, and the system automatically creates `TextureObject` or `TextureSample` nodes
+- **VerticalLayering without bottom**: When root only specifies `top`, the Top slab becomes the root directly

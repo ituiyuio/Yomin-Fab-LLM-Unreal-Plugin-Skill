@@ -1,57 +1,57 @@
 ---
 layout: default
-title: 自动布局
+title: Auto Layout
 parent: LLMMaterial
 nav_order: 7
 ---
 
-# 自动布局
+# Auto Layout
 
-当 `material generate` 生成材质时，节点会自动按拓扑顺序排列。
+When `material generate` creates materials, nodes are automatically arranged in topological order.
 
-## 布局规则
+## Layout Rules
 
-- **数据流方向**：从左到右，Source 节点（Constant/Parameter/Texture）→ 运算节点 → 输出
-- **列距**：280px（可配置）
-- **Y轴对齐**：所有列共享同一全局行网格，节点按分类对号入行
-- **孤立节点**：位于最左侧列下方
+- **Data flow direction**: Left to right, Source nodes (Constant/Parameter/Texture) → Operation nodes → Output
+- **Column spacing**: 280px (configurable)
+- **Y-axis alignment**: All columns share the same global row grid, nodes are placed according to their category
+- **Isolated nodes**: Located below the leftmost column
 
-## 全局行网格对齐算法
+## Global Row Grid Alignment Algorithm
 
-1. 计算最大列节点数 `MaxNodesInColumn`
-2. 构建全局行网格：`RowGrid[i] = GridOriginY - (MaxNodesInColumn - 1) * RowHeight * 0.5 + i * RowHeight`
-3. 每个节点按分类行号放置：Source → Row 0, Operator → Row 1, Utility → Row 2, Other → 最后
+1. Calculate maximum nodes per column `MaxNodesInColumn`
+2. Build global row grid: `RowGrid[i] = GridOriginY - (MaxNodesInColumn - 1) * RowHeight * 0.5 + i * RowHeight`
+3. Each node is placed by category row number: Source → Row 0, Operator → Row 1, Utility → Row 2, Other → Last
 
-## 节点分类排序
+## Node Category Sorting
 
-同列内节点按以下顺序排列：
+Nodes within the same column are sorted by the following order:
 
-1. **Source**（常量/参数/纹理）→ Row 0（顶部）
-2. **Operator**（数学运算）→ Row 1
-3. **Utility**（遮罩/变换/插值）→ Row 2
-4. **Other** → 后续行
+1. **Source** (Constant/Parameter/Texture) → Row 0 (top)
+2. **Operator** (Math operations) → Row 1
+3. **Utility** (Mask/Transform/Interpolation) → Row 2
+4. **Other** → Subsequent rows
 
-## 布局算法
+## Layout Algorithm
 
-- 基于 Sugiyama 分层布局（BFS 拓扑排序）
-- 双向重心排序减少连线交叉
-- 支持回路处理（放在最后一列）
-- 全局行网格确保所有列节点列对齐
+- Based on Sugiyama layered layout (BFS topological sort)
+- Bidirectional barycenter sorting to reduce edge crossings
+- Supports loop handling (placed in the last column)
+- Global row grid ensures column alignment for all column nodes
 
-## 修改布局参数
+## Modifying Layout Parameters
 
-布局参数位于：`Plugins/LLMMaterial/Source/LLMMaterial/Builder/MaterialGraphBuilder.cpp`
+Layout parameters are located in: `Plugins/LLMMaterial/Source/LLMMaterial/Builder/MaterialGraphBuilder.cpp`
 
-函数 `LayoutNodes()` 中的常量：
+Constants in function `LayoutNodes()`:
 
-- `ColumnWidth` - 列宽
-- `RowHeight` - 行高
-- `SourceColX` - 源节点列 X 坐标
-- `GridOriginY` - 网格原点 Y 坐标
+- `ColumnWidth` - Column width
+- `RowHeight` - Row height
+- `SourceColX` - Source node column X coordinate
+- `GridOriginY` - Grid origin Y coordinate
 
-## 示例
+## Example
 
-给定以下节点定义：
+Given the following node definition:
 
 ```json
 {
@@ -67,7 +67,7 @@ nav_order: 7
 }
 ```
 
-自动布局结果：
+Auto layout result:
 
 ```
 Column 0 (Source):     Column 1 (Operator):

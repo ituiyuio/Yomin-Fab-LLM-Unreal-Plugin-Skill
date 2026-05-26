@@ -1,23 +1,23 @@
 ---
 layout: default
-title: 快速开始
+title: Getting Started
 parent: LLMMaterial
 nav_order: 2
 ---
 
-# 快速开始
+# Getting Started
 
-## 安装
+## Installation
 
-1. 将 `LLMMaterial` 插件复制到项目的 `Plugins/` 目录
-2. 在 UE 编辑器中启用插件（Edit → Plugins → AI → LLMMaterial）
-3. 重启编辑器
+1. Copy the `LLMMaterial` plugin folder to your project's `Plugins/` directory
+2. Enable the plugin in UE Editor (Edit → Plugins → AI → LLMMaterial)
+3. Restart the editor
 
-## 创建第一个材质
+## Creating Your First Material
 
-### Step 1: 编写 JSON 文件
+### Step 1: Write a JSON File
 
-创建一个 `MyRedMaterial.llmmat` 文件：
+Create a `MyRedMaterial.llmmat` file:
 
 ```json
 {
@@ -41,49 +41,49 @@ nav_order: 2
 }
 ```
 
-### Step 2: 生成材质资产
+### Step 2: Generate Material Asset
 
-在编辑器中打开 LLMMaterial 面板（Window → LLMMaterial），或使用命令行：
+Open the LLMMaterial panel in the editor (Window → LLMMaterial), or use the command line:
 
 ```bash
 material generate /Game/Materials/MyRedMaterial --from MyRedMaterial.llmmat
 ```
 
-### Step 3: 查看结果
+### Step 3: View Results
 
-生成的 Material 资产会自动打开，你可以在 Material Editor 中进一步调整。
+The generated Material asset opens automatically, where you can make further adjustments in the Material Editor.
 
-## 文件格式详解
+## File Format Details
 
-### 基本结构
+### Basic Structure
 
 ```json
 {
-  "version": "1.0",           // 版本号
-  "name": "MaterialName",     // 材质名称
-  "domain": "Surface",        // 材质域
-  "blendMode": "Opaque",      // 混合模式
-  "shadingModel": "DefaultLit", // 着色模型
-  "nodes": [...],             // 节点数组
-  "connections": [...],       // 连接数组（可选）
-  "output": {...}            // 输出配置
+  "version": "1.0",           // Version number
+  "name": "MaterialName",     // Material name
+  "domain": "Surface",        // Material domain
+  "blendMode": "Opaque",      // Blend mode
+  "shadingModel": "DefaultLit", // Shading model
+  "nodes": [...],             // Node array
+  "connections": [...],       // Connection array (optional)
+  "output": {...}            // Output configuration
 }
 ```
 
-### 节点定义
+### Node Definition
 
 ```json
 {
-  "id": "uniqueNodeId",       // 节点唯一标识符
-  "type": "Constant3Vector",   // 节点类型
-  "displayName": "My Color",   // 显示名称（可选）
-  "properties": {              // 节点属性
+  "id": "uniqueNodeId",       // Unique node identifier
+  "type": "Constant3Vector",   // Node type
+  "displayName": "My Color",   // Display name (optional)
+  "properties": {              // Node properties
     "PropertyName": "value"
   }
 }
 ```
 
-### 输出配置
+### Output Configuration
 
 ```json
 "output": {
@@ -95,16 +95,16 @@ material generate /Game/Materials/MyRedMaterial --from MyRedMaterial.llmmat
 }
 ```
 
-## 使用编辑器面板
+## Using the Editor Panel
 
-LLMMaterial 提供了一个三栏式编辑器面板：
+LLMMaterial provides a three-column editor panel:
 
-- **文件列表**（左）：管理 .llmmat 文件
-- **节点树**（中）：查看材质结构
-- **属性面板**（右）：编辑节点属性
+- **File List** (left): Manage .llmmat files
+- **Node Tree** (center): View material structure
+- **Properties Panel** (right): Edit node properties
 
-### 工具栏按钮
+### Toolbar Buttons
 
-- **Generate**：从选中的 .llmmat 文件生成材质
-- **Export Material**：将现有材质导出为 JSON
-- **Export Schema**：导出表达式 Schema 参考
+- **Generate**: Generate material from selected .llmmat file
+- **Export Material**: Export existing material to JSON
+- **Export Schema**: Export expression schema reference

@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 完整示例
+title: Complete Examples
 parent: LLMMaterial
 nav_order: 5
 ---
 
-# 完整示例
+# Complete Examples
 
-## 简单颜色材质
+## Simple Color Material
 
 ```json
 {
@@ -26,7 +26,7 @@ nav_order: 5
 }
 ```
 
-## 纹理材质
+## Texture Material
 
 ```json
 {
@@ -45,7 +45,7 @@ nav_order: 5
 }
 ```
 
-## 金属材质
+## Metal Material
 
 ```json
 {
@@ -69,7 +69,7 @@ nav_order: 5
 }
 ```
 
-## 透明玻璃材质
+## Transparent Glass Material
 
 ```json
 {
@@ -94,7 +94,7 @@ nav_order: 5
 }
 ```
 
-## 颜色 + 纹理混合
+## Color + Texture Blend
 
 ```json
 {
@@ -115,7 +115,7 @@ nav_order: 5
 }
 ```
 
-## 自发光材质
+## Emissive Material
 
 ```json
 {
@@ -134,7 +134,7 @@ nav_order: 5
 }
 ```
 
-## 法线贴图材质
+## Normal Map Material
 
 ```json
 {
@@ -151,7 +151,7 @@ nav_order: 5
 }
 ```
 
-## Substrate 硅胶材质
+## Substrate Silicone Material
 
 ```json
 {
@@ -190,7 +190,7 @@ nav_order: 5
 }
 ```
 
-## 带参数的材质
+## Material with Parameters
 
 ```json
 {
