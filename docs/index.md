@@ -1,40 +1,44 @@
 ---
 layout: home
-title: YominUnreal Plugins
-nav_order: 1
+
+hero:
+  name: YominUnreal Plugins
+  text: AI-powered Unreal Engine Development Tools
+  tagline: Define your intent in JSON, let the plugin handle the rest
+  actions:
+    - theme: brand
+      text: Get Started
+      link: /llm-dynamic-ui/
+    - theme: alt
+      text: View on GitHub
+      link: https://github.com/yomin-unreal
+
+features:
+  - icon: 🎨
+    title: LLM Dynamic UI
+    details: DSL-Driven UMG Widget Generation System. Generate complete UMG Widget Blueprints from JSON with layout, animations, and SDF visual effects.
+    link: /llm-dynamic-ui/
+    linkText: Explore
+
+  - icon: 🎭
+    title: LLM Material
+    details: JSON-Driven Material Generation System. Create Material Blueprint assets from JSON definitions with full Substrate support and custom HLSL shader functions.
+    link: /llm-material/
+    linkText: Explore
+
+  - icon: 🌲
+    title: LLM StateTree
+    details: JSON-driven StateTree Asset Generator. Generate StateTree Blueprint assets from JSON with schema auto-inference and live preview for AI behavior trees.
+    link: /llm-statetree/
+    linkText: Explore
+
+  - icon: 🔊
+    title: LLM MetaSound
+    details: JSON-driven MetaSound Audio Asset Generator. Generate UMetaSoundSource and UMetaSoundPatch assets from JSON with auto-connected nodes.
+    link: /llm-metasound/
+    linkText: Explore
 ---
 
-# YominUnreal Plugins
-
-AI-powered Unreal Engine development tools by YominUnreal.
-
-> All plugins share the same paradigm: define your intent in JSON, and let the plugin handle the rest.
-
----
-
-## Plugins
-
-### LLM Dynamic UI
-
-DSL-Driven UMG Widget Generation System for Unreal Engine 5.
-
-Generate complete UMG Widget Blueprints from JSON with layout, animations, and SDF visual effects — no manual editor work required.
-
-### LLM Material
-
-JSON-Driven Material Generation System for Unreal Engine 5.
-
-Create and modify Material Blueprint assets from JSON definitions with full Substrate support and custom HLSL shader functions.
-
-### LLM StateTree
-
-JSON-driven StateTree Asset Generator for Unreal Engine 5.
-
-Generate StateTree Blueprint assets from JSON with schema auto-inference and live preview for AI behavior trees.
-
-### LLM MetaSound
-
-JSON-driven MetaSound Audio Asset Generator for Unreal Engine 5.
-
-Generate UMetaSoundSource and UMetaSoundPatch assets from JSON with auto-connected nodes and type-safe edges.
-
+<div style="text-align: center; padding: 2rem 0; color: #888;">
+All plugins share the same paradigm: <strong>define your intent in JSON</strong>, and let the plugin handle the rest.
+</div>
